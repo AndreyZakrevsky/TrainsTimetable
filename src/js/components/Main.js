@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'D:/PROG/EPAM/train_statment/src/css/Main.css';
+import styles from './style.css';
 import TrainsList from './TrainsList';
 import trainCreator from '../containers/trainCreator';
 
