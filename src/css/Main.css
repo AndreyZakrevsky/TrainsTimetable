@@ -1,0 +1,103 @@
+
+
+.main{
+    width: 100%;
+    min-height: 350px;
+    background: #282c34;
+    text-align: center;
+    font-size: 30px;
+    color: #F1F3F4;
+    padding-top: 30px;
+    font-family: 'Russo One', sans-serif;
+}
+
+.form_block{
+    width: 40%;
+    height: 200px;
+    margin: 20px auto;
+}
+
+.input_btn{
+    width: 50%;
+    height: 40px;
+    background-color: #F1F3F4;
+    font-size: 30px;
+    border-radius: 0 50px 0 50px ;
+    color: #282c34;
+    border: none;
+    margin-top: 30px;
+    font-family: 'Russo One', sans-serif;
+    font-weight: bolder;
+    outline:none;
+}
+
+option{
+    font-size: 15px;
+    font-weight: bolder;
+    background-color:  #F1F3F4;
+    color:#282c34;
+}
+
+.select_language{
+    width:60%;
+    background: transparent;
+    color: #F1F3F4;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #F1F3F4;
+    height: 34px;
+    outline:none;
+}
+
+.trains_list{
+    width: 70%;
+    min-height: 200px;
+    margin: 0 auto;
+}
+
+
+.trains_list{
+    width: 70%;
+    min-height: 200px;
+    margin: 0 auto;
+}
+
+
+th {
+    background: #282c34;
+    padding: 10px 20px;
+    color: #F1F3F4;
+}
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+th:first-child, td:first-child {
+    text-align: left;
+}
+th:first-child {
+    border-top-left-radius: 10px;
+}
+th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+}
+td {
+    padding: 10px 20px;
+    background: #F1F3F4;
+    color: #3C3F41;
+}
+tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+tr td:last-child {
+    border-right: none;
+}
+
+.input_btn:hover{
+    text-shadow: 1px 1px 2px yellow, 0 0 1em ;
+}
