@@ -5,11 +5,13 @@ import Train from './Train';
 const  TrainsList = ( trainList  )=>{
     const flag = trainList.flag;
 
-    return(
+     //console.log(trainList);
+     return(
         <div>
             <table className="table_head">
                 <thead>
                     <tr>
+                        <th>{(flag === true )? "Time left before departure" : "Залишилось часу до відправлення "}</th>
                         <th>{(flag === true )? "Train number" : "Номер поїзда"}</th>
                         <th>{(flag === true )? "Train departure point" : "Пункт відправлення"}</th>
                         <th>{(flag === true )? "Point of train arrival" : "Пункт прибуття"}</th>
@@ -20,9 +22,15 @@ const  TrainsList = ( trainList  )=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        Object.keys(trainList).map( (train , i) => <Train {...trainList[train]} key={ i } />)
-                    }
+                    {Object.keys(trainList).map( (train , i) => {
+                        if(train === "arriveTime" || train === "flag"){
+                            return null;
+                        }else{
+                            return(
+                                <Train {...trainList[train]}  key={ i } />
+                            )
+                        }
+                    })}
                 </tbody>
             </table>
         </div>
