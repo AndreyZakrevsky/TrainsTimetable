@@ -21,7 +21,7 @@ constructor() {
     this.handleWrite = this.handleWrite.bind(this);
 }
 
-handleWrite(){
+handleWrite(e){
     let printData=[];
     let obj = {};
     this.state.trains.map((train)=> {
@@ -31,7 +31,11 @@ handleWrite(){
        return printData;
     });
     printData = JSON.stringify(printData);
-    console.log(printData);
+    let someData = 'data:application/json;charset=utf-8,' + encodeURIComponent(printData);
+    e.target.href = someData;
+    e.target.target = '_blank';
+    e.target.download = 'trains.txt';
+
 };
 
 handleSubmit(e){
@@ -79,7 +83,7 @@ render(){
     return(
         <div>
             <div className="main">
-                <h1>{this.state.language ==="en" ? "Trains timetable" :"Розклад руху потягів"}</h1>
+                <h1>{this.state.language ==="en" ? "Trains timetable" :"Розклад руху потягів"} </h1>
                 <div className="form_block">
                     <form action="#" onSubmit={this.handleSubmit}>
                         <select name="language"   className="select_language" onChange={this.handleChange} >
@@ -94,9 +98,10 @@ render(){
                 </div>
             </div>
             <div className="trains_list">
-                    { this.state.trains && <TrainsList { ...this.state.trains}   flag={(this.state.language ==="en")}/>}
-                    { this.state.trains && <button className = "btn_write" onClick={this.handleWrite}>{this.state.language ==="en"
-                    ? "Write to file" :"Записати у файл"}</button>}
+                { this.state.trains && <TrainsList { ...this.state.trains}   flag={(this.state.language ==="en")}/>}
+                { this.state.trains && <a href="#" className = "btn_write" onClick={this.handleWrite}>{this.state.language ==="en"
+                                            ? "Write to file" :"Записати у файл"}</a>}
+                    
             </div>
         </div>
     )

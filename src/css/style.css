@@ -24,7 +24,7 @@
     font-size: 30px;
     border-radius: 0 50px 0 50px ;
     color: #282c34;
-    border: none;
+    border: 1px solid yellow;
     margin-top: 30px;
     font-family: 'Russo One', sans-serif;
     font-weight: bolder;
@@ -34,9 +34,9 @@
     display: inline-block;
     background: #282c34;
     padding: 5px 45px;
-    color: #333;
+
     border-radius: 0 50px 0 50px ;
-    border: 1px solid #666;
+    border: 1px solid yellow;
     color: #F1F3F4;
     font-size: 25px;
     margin-left: 20px ;
@@ -44,6 +44,7 @@
     font-family: 'Russo One', sans-serif;
     font-weight: bold;
     margin: 50px;
+    text-decoration: none;
 }
 
 
