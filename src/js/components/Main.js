@@ -22,7 +22,16 @@ constructor() {
 }
 
 handleWrite(){
-    alert(2345678);
+    let printData=[];
+    let obj = {};
+    this.state.trains.map((train)=> {
+        let a =0;
+       for(let key in train){ (key ==="beforeDep")? a++ : obj[key] = train[key]; }
+        printData.push(obj);
+       return printData;
+    });
+    printData = JSON.stringify(printData);
+    console.log(printData);
 };
 
 handleSubmit(e){
@@ -41,13 +50,7 @@ handleSubmit(e){
         });
     }
 
-    // let timeinterval = setInterval(()=>{
-    //     let a = this.state.arriveTime + 1;
-    //     this.setState({
-    //         arriveTime: a
-    //     });
-    //
-    // }, 1000);
+
 };
 
 handleAmount(e){

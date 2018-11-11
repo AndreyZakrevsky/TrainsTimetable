@@ -27,7 +27,8 @@ class Train {
 
 const getDepartureTime = (date ,flag)=>{
     let day =(flag)? DAYS_EN : DAYS_UA;
-    return `${day[date.getDay()]} ${date.getHours()}:${(date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()}`
+    let a = ('0' + date.getDate()).slice(-2) + '.' + ('0' + (date.getMonth() + 1)).slice(-2) + '.' +  date.getFullYear();
+     return `${a}  ${day[date.getDay()]}  (${date.getHours()}:${(date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()})`
 };
 
 const getArrivalTime = (date ,coords ,flag)=>{
@@ -40,8 +41,9 @@ const getArrivalTime = (date ,coords ,flag)=>{
         }
     date.setHours(date.getHours() + timeHour);
     date.setMinutes(date.getMinutes() + Number(timeMinutes));
+    let a = ('0' + date.getDate()).slice(-2) + '.' + ('0' + (date.getMonth() + 1)).slice(-2) + '.' +  date.getFullYear();
     let day =(flag)? DAYS_EN : DAYS_UA;
-    return `${day[date.getDay()]} ${date.getHours()}:${(date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()}`
+    return `${a} ${day[date.getDay()]} (${date.getHours()}:${(date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()})`
 };
 
 const createTrains = (amunt)=>{

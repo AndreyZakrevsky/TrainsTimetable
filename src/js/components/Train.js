@@ -17,7 +17,8 @@ class Train extends Component{
           hours =  Math.floor((t / (1000 * 60 * 60)) % 24);
           minutes =  Math.floor((t / 1000 / 60) % 60);
           seconds =Math.floor((t / 1000) % 60);
-         let goodTime =  `|Days to departure: ${days }|  ${('0' + hours).slice(-2)}:${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`;
+            let d = (this.props.flag)? "Days" : "Днів";
+         let goodTime =  `${days } ${d} ${('0' + hours).slice(-2)}:${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`;
             this.setState({beforeRes:goodTime});
             if (total <= 0) {
                 clearInterval(timeinterval);

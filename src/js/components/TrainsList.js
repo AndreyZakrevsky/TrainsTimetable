@@ -4,8 +4,6 @@ import Train from './Train';
 
 const  TrainsList = ( trainList  )=>{
     const flag = trainList.flag;
-
-     //console.log(trainList);
      return(
         <div>
             <table className="table_head">
@@ -27,7 +25,7 @@ const  TrainsList = ( trainList  )=>{
                             return null;
                         }else{
                             return(
-                                <Train {...trainList[train]}  key={ i } />
+                                <Train {...trainList[train]} flag={flag} key={ i } />
                             )
                         }
                     })}
