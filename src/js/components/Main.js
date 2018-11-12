@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import  '../../css/style.css';
 import TrainsList from './TrainsList';
 import trainCreator from '../containers/trainCreator';
-
+import { CITIES_UA } from '../containers/layouts';
 
 class Main extends Component{
 constructor() {
@@ -10,7 +10,7 @@ constructor() {
     this.state = {
         language: "en",
         trains: "",
-        amount:"",
+        amount: 2 *(CITIES_UA.length *(CITIES_UA.length - 1) / 2),
         trainList_en: "",
         trainList_ua: "",
 
@@ -34,7 +34,7 @@ handleWrite(e){
     let someData = 'data:application/json;charset=utf-8,' + encodeURIComponent(printData);
     e.target.href = someData;
     e.target.target = '_blank';
-    e.target.download = 'trains.txt';
+    e.target.download = 'trains.json';
 
 };
 
@@ -53,8 +53,6 @@ handleSubmit(e){
             trains:(this.state.language ==="en")? obj.trainList_en : obj.trainList_ua
         });
     }
-
-
 };
 
 handleAmount(e){

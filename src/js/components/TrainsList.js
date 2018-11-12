@@ -4,6 +4,7 @@ import Train from './Train';
 
 const  TrainsList = ( trainList  )=>{
     const flag = trainList.flag;
+
      return(
         <div>
             <table className="table_head">

@@ -41,8 +41,10 @@ const getArrivalTime = (date ,coords ,flag)=>{
         }
     date.setHours(date.getHours() + timeHour);
     date.setMinutes(date.getMinutes() + Number(timeMinutes));
-    let a = ('0' + date.getDate()).slice(-2) + '.' + ('0' + (date.getMonth() + 1)).slice(-2) + '.' +  date.getFullYear();
     let day =(flag)? DAYS_EN : DAYS_UA;
+
+
+    let a = ('0' + date.getDate()).slice(-2) + '.' + ('0' + (date.getMonth() + 1)).slice(-2) + '.' +  date.getFullYear();
     return `${a} ${day[date.getDay()]} (${date.getHours()}:${(date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()})`
 };
 
@@ -67,6 +69,7 @@ const createTrains = (amunt)=>{
         timeDep.setHours(time.getHours());
         timeDep.setMinutes(time.getMinutes());
         timeDep.setSeconds(time.getSeconds());
+
         trainsUaPlusEn.trainList_en.push(new Train(names[0] , CITIES_EN[coord[0]] , CITIES_EN[coord[1]]
             ,DAYS_EN[t],getDepartureTime(time , true), getArrivalTime(time, coord ,true) , `${getCost(coord)} (UAH)` ,timeDep) );
         trainsUaPlusEn.trainList_ua.push(new Train(names[1] , CITIES_UA[coord[0]] , CITIES_UA[coord[1]]
