@@ -1,12 +1,15 @@
 
 const getDateString = (date , lang)=>{
-     let day = date.getDay();
-     let curDate = date.getDate();
-     let month = date.getMonth();
-     let year = date.getFullYear();
-     let hours = date.getHours();
-     let minues = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
-   return `${('0' + curDate).slice(-2)}.${('0' + (month +1)).slice(-2)}.${year} ${lang.days[day ]}(${hours}:${minues})`;
+     let currentDate = new Date().getDate();
+    let curDate = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    let hours = date.getHours();
+    let minues = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
+    let day = (currentDate === curDate)? lang.today : lang.days[date.getDay()];
+     // let day = date.getDay();
+
+   return `${('0' + curDate).slice(-2)}.${('0' + (month +1)).slice(-2)}.${year} ${day}(${hours}:${minues})`;
 };
 
 const createTrains = (temp , lang)=>{

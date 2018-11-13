@@ -15,7 +15,9 @@ const langEn = {
 
     buttonTitles : ["Generate" , "Write to file"],
 
-    currency: "UAH"
+    currency: "UAH",
+
+    today : "Today"
 };
 
 export default langEn;

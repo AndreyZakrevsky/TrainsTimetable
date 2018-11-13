@@ -3,9 +3,6 @@ import Train from './Train';
 
 
 const  TrainsList = ( trainList  )=>{
-
- //console.log(trainList.titles);
-    //console.log(trainList);
      return(
         <div>
             <table className="table_head">

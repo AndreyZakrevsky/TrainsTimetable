@@ -7,6 +7,8 @@ import langUa  from "../languageConfig/langUa";
 import createTrains from "../containers/trainsCreator";
 const AMOUNT_OF_DEPARTURES = 2 *(langEn.cities.length *(langEn.cities.length - 1) / 2);
 
+
+
 class Main extends Component{
 constructor() {
     super();
@@ -23,19 +25,20 @@ constructor() {
 }
 
 handleWrite(e){
-    // let printData=[];
-    // let obj = {};
-    // this.state.trains.map((train)=> {
-    //     let a =0;
-    //    for(let key in train){ (key ==="beforeDep")? a++ : obj[key] = train[key]; }
-    //     printData.push(obj);
-    //    return printData;
-    // });
-    // printData = JSON.stringify(printData);
-    // let someData = 'data:application/json;charset=utf-8,' + encodeURIComponent(printData);
-    // e.target.href = someData;
-    // e.target.target = '_blank';
-    // e.target.download = 'trains.json';
+
+    let printData=[];
+    let obj = {};
+    this.state.trains.map((train)=> {
+        let a =0;
+        for(let key in train){ (key ==="beforeDep")? a++ : obj[key] = train[key]; }
+        printData.push(obj);
+        return printData;
+    });
+    printData = JSON.stringify(printData);
+    let someData = 'data:application/json;charset=utf-8,' + encodeURIComponent(printData);
+    e.target.href = someData;
+    e.target.target = '_blank';
+    e.target.download = 'trains.json';
 
 };
 
@@ -63,10 +66,15 @@ handleChange(event){
 let search = event.target.value;
     if((search ==="en")){
         this.setState({ language :  langEn });
+        if(this.state.templatesTrains){
             this.setState({ trains : createTrains(this.state.templatesTrains , langEn)});
+        }
+
     }else{
         this.setState({ language :  langUa});
+        if(this.state.templatesTrains){
             this.setState({ trains : createTrains(this.state.templatesTrains , langUa)});
+        }
     }
 }
 
@@ -89,8 +97,7 @@ render(){
             </div>
             <div className="trains_list">
                 { this.state.trains && <TrainsList { ...this.state.trains}   titles={this.state.language.titles}/>}
-                {/*{ this.state.trains && <a href="#" className = "btn_write" onClick={this.handleWrite}> {this.state.language.buttonTitles[1]} </a>}*/}
-
+                { this.state.trains && <a href="#" className = "btn_write" onClick={this.handleWrite}> {this.state.language.buttonTitles[1]} </a>}
             </div>
     </div>
     )
