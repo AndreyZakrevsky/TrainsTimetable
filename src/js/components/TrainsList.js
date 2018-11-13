@@ -3,30 +3,31 @@ import Train from './Train';
 
 
 const  TrainsList = ( trainList  )=>{
-    const flag = trainList.flag;
 
+ //console.log(trainList.titles);
+    //console.log(trainList);
      return(
         <div>
             <table className="table_head">
                 <thead>
                     <tr>
-                        <th>{(flag === true )? "Time left before departure" : "Залишилось часу до відправлення "}</th>
-                        <th>{(flag === true )? "Train number" : "Номер поїзда"}</th>
-                        <th>{(flag === true )? "Train departure point" : "Пункт відправлення"}</th>
-                        <th>{(flag === true )? "Point of train arrival" : "Пункт прибуття"}</th>
-                        <th>{(flag === true )? "Day of the week" : "День тижня"}</th>
-                        <th>{(flag === true )? "Departure time" : "Час відправлення"}</th>
-                        <th>{(flag === true )? "Arrival time" : "Час прибуття"}</th>
-                        <th>{(flag === true )? "Cost" : "Вартість"}</th>
+                        <th>{trainList.titles[0]}</th>
+                        <th>{trainList.titles[1]}</th>
+                        <th>{trainList.titles[2]}</th>
+                        <th>{trainList.titles[3]}</th>
+                        <th>{trainList.titles[4]}</th>
+                        <th>{trainList.titles[5]}</th>
+                        <th>{trainList.titles[6]}</th>
+                        <th>{trainList.titles[7]}</th>
                     </tr>
                 </thead>
                 <tbody>
                     {Object.keys(trainList).map( (train , i) => {
-                        if(train === "arriveTime" || train === "flag"){
+                        if(train === "titles" ){
                             return null;
                         }else{
                             return(
-                                <Train {...trainList[train]} flag={flag} key={ i } />
+                                <Train {...trainList[train]} key={ i } />
                             )
                         }
                     })}

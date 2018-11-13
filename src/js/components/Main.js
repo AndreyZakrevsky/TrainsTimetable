@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import  '../../css/style.css';
 import TrainsList from './TrainsList';
-import trainCreator from '../containers/trainCreator';
-import { CITIES_UA } from '../containers/layouts';
+import templatesTreins from '../containers/templatesTreins';
+import langEn  from "../languageConfig/langEn";
+import langUa  from "../languageConfig/langUa";
+import createTrains from "../containers/trainsCreator";
+const AMOUNT_OF_DEPARTURES = 2 *(langEn.cities.length *(langEn.cities.length - 1) / 2);
 
 class Main extends Component{
 constructor() {
     super();
     this.state = {
-        language: "en",
-        trains: "",
-        amount: 2 *(CITIES_UA.length *(CITIES_UA.length - 1) / 2),
-        trainList_en: "",
-        trainList_ua: "",
-
+        language: langEn ,
+        templatesTrains: null,
+        trains: null,
+        amount: AMOUNT_OF_DEPARTURES,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,45 +23,37 @@ constructor() {
 }
 
 handleWrite(e){
-    let printData=[];
-    let obj = {};
-    this.state.trains.map((train)=> {
-        let a =0;
-       for(let key in train){ (key ==="beforeDep")? a++ : obj[key] = train[key]; }
-        printData.push(obj);
-       return printData;
-    });
-    printData = JSON.stringify(printData);
-    let someData = 'data:application/json;charset=utf-8,' + encodeURIComponent(printData);
-    e.target.href = someData;
-    e.target.target = '_blank';
-    e.target.download = 'trains.json';
+    // let printData=[];
+    // let obj = {};
+    // this.state.trains.map((train)=> {
+    //     let a =0;
+    //    for(let key in train){ (key ==="beforeDep")? a++ : obj[key] = train[key]; }
+    //     printData.push(obj);
+    //    return printData;
+    // });
+    // printData = JSON.stringify(printData);
+    // let someData = 'data:application/json;charset=utf-8,' + encodeURIComponent(printData);
+    // e.target.href = someData;
+    // e.target.target = '_blank';
+    // e.target.download = 'trains.json';
 
 };
 
 handleSubmit(e){
     e.preventDefault();
-    if(this.state.amount <= 0){
-        let worn = (this.state.language ==="en")? "Enter the number of routes !!!": "Введіть кількість маршрутів !!!"
-        alert(worn);
-    }else{
-        let obj =trainCreator(Number(this.state.amount));
-        this.setState({
-            trainList_en: obj.trainList_en,
-            trainList_ua: obj.trainList_ua
-        });
-        this.setState({
-            trains:(this.state.language ==="en")? obj.trainList_en : obj.trainList_ua
-        });
-    }
+         let temp = templatesTreins(Number(this.state.amount));
+         this.setState({templatesTrains: temp});
+         let trains = (this.state.templatesTrains === null)? createTrains(temp , this.state.language)
+                                 : createTrains(this.state.templatesTrains ,  this.state.language);
+         this.setState({trains: trains});
+
 };
 
 handleAmount(e){
     const amount = (e.target.validity.valid) ? e.target.value : this.state.amount;
-    if(Number(amount > 20)){
-        alert(this.state.language ==="en" ? "Only numbers from 1 to 20 !!!"
-              :"Тільки числа від 1 до 20 !!!");
-        this.setState({amount:""});
+    if(Number(amount > AMOUNT_OF_DEPARTURES)){
+        alert(this.state.language.warning);
+        this.setState({amount:AMOUNT_OF_DEPARTURES});
     }else{
       this.setState({amount:amount});
     }
@@ -68,20 +61,20 @@ handleAmount(e){
 
 handleChange(event){
 let search = event.target.value;
-    search ==="en"? this.setState({
-                    language: search,
-                    trains:this.state.trainList_en })
-              :
-                this.setState({
-                    language: search,
-                    trains:this.state.trainList_ua })
+    if((search ==="en")){
+        this.setState({ language :  langEn });
+            this.setState({ trains : createTrains(this.state.templatesTrains , langEn)});
+    }else{
+        this.setState({ language :  langUa});
+            this.setState({ trains : createTrains(this.state.templatesTrains , langUa)});
+    }
 }
 
 render(){
     return(
         <div>
             <div className="main">
-                <h1>{this.state.language ==="en" ? "Trains timetable" :"Розклад руху потягів"} </h1>
+                <h1>{this.state.language.mainTitle} </h1>
                 <div className="form_block">
                     <form action="#" onSubmit={this.handleSubmit}>
                         <select name="language"   className="select_language" onChange={this.handleChange} >
@@ -90,18 +83,16 @@ render(){
                         </select>
                         <input type="text" className="select_language" pattern="[0-9]*"  value={this.state.amount}
                                                                              onChange={this.handleAmount}/>
-                        <input className="input_btn" type="submit" value={this.state.language==="en"?
-                                                                              "Generate" :"Згенерувати"} />
+                        <input className="input_btn" type="submit" value={this.state.language.buttonTitles[0]} />
                     </form>
                 </div>
             </div>
             <div className="trains_list">
-                { this.state.trains && <TrainsList { ...this.state.trains}   flag={(this.state.language ==="en")}/>}
-                { this.state.trains && <a href="#" className = "btn_write" onClick={this.handleWrite}>{this.state.language ==="en"
-                                            ? "Write to file" :"Записати у файл"}</a>}
-                    
+                { this.state.trains && <TrainsList { ...this.state.trains}   titles={this.state.language.titles}/>}
+                {/*{ this.state.trains && <a href="#" className = "btn_write" onClick={this.handleWrite}> {this.state.language.buttonTitles[1]} </a>}*/}
+
             </div>
-        </div>
+    </div>
     )
   }
 }

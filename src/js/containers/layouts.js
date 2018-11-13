@@ -1,8 +1,8 @@
-export  const CITIES_UA =['Київ', 'Харків', 'Львів', 'Одеса', 'Дніпро'];
-export  const CITIES_EN =['Kyiv', 'Kharkiv', 'Lviv', 'Odessa', 'Dnepr'];
-export  const DAYS_UA =["Неділя","Понеділок" , "Вівторок" , "Середа" , "Четвер" ,"П'ятниця" ,"Субота" ];
-export  const DAYS_EN =[ "Sunday" ,"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-export  const ARR_UA =['А','Б','В','Г','Д','Е','Ё','З','К','Л','М','Н', 'О','П','Р','С','Т','У','Ф','Х'];
+export  const CITIES_UA = ['Київ', 'Харків', 'Львів', 'Одеса', 'Дніпро'];
+export  const CITIES_EN = ['Kyiv', 'Kharkiv', 'Lviv', 'Odessa', 'Dnepr'];
+export  const DAYS_UA = ["Неділя","Понеділок" , "Вівторок" , "Середа" , "Четвер" ,"П'ятниця" ,"Субота" ];
+export  const DAYS_EN = [ "Sunday" ,"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+export  const ARR_UA = ['А','Б','В','Г','Д','Е','Ё','З','К','Л','М','Н', 'О','П','Р','С','Т','У','Ф','Х'];
 export  const ARR_EN = ['A','B','V','G','D','E','E','Z','K','L','M','N', 'O','P','R','S','T','U','F','H'];
 
 export  const DISTANCES = [

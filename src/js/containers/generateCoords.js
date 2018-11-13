@@ -1,5 +1,4 @@
 
-
 const randNambers = ()=>{
     let coord;
     do{
