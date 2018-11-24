@@ -11,6 +11,7 @@ class Train {
     arrivalDate(){
         let date = new Date();
             date.setDate(this.departureDate.getDate());
+            date.setMonth(this.departureDate.getMonth());
             date.setHours(this.departureDate.getHours());
             date.setMinutes(this.departureDate.getMinutes());
             date.setSeconds(this.departureDate.getSeconds());

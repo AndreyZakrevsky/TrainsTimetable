@@ -29,12 +29,15 @@ handleWrite(e){
     let printData=[];
     let obj = {};
     this.state.trains.map((train)=> {
-        let a =0;
+        
+        let a = 0;
         for(let key in train){ (key ==="beforeDep")? a++ : obj[key] = train[key]; }
         printData.push(obj);
+        obj = {};
         return printData;
     });
-    printData = JSON.stringify(printData);
+
+    printData = JSON.stringify(printData); 
     let someData = 'data:application/json;charset=utf-8,' + encodeURIComponent(printData);
     e.target.href = someData;
     e.target.target = '_blank';

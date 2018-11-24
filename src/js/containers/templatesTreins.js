@@ -8,7 +8,7 @@ const createTemplates = (amount)=>{
     coords.map( (coord)=>{
         let name = nameTrain();
         let time =  new Date();
-            time.setDate(time.getDate()+ (Math.random() * (8 - 0)+ 0));
+            time.setDate(time.getDate()+ (Math.random() * (15 - 0)+ 0));
             time.setHours(time.getHours()+ (Math.random() * (25 - 1)+ 1));
             time.setMinutes(time.getMinutes()+ (Math.random() * (61 - 1)+ 1));
             time.setSeconds(time.getSeconds()+ (Math.random() * (61 - 1)+ 1));

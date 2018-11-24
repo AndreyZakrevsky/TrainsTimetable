@@ -20,7 +20,7 @@ const createTrains = (temp , lang)=>{
                  obj.name = `${a}${lang.letters[item.name[a]]}`;
                  obj.departure_point = lang.cities[item.departure_point];
                  obj.arrival_point = lang.cities[item.arrival_point];
-                 obj.departureDate = getDateString(item.departureDate , lang);
+                 obj.departureDate = getDateString(item.departureDate , lang); 
                  obj.arrivalDate = getDateString(item.arrivalDate() , lang);
                  obj.day = lang.days[item.departureDate.getDay() ] ;
                  obj.cost = `${item.cost()}(${lang.currency})`;
