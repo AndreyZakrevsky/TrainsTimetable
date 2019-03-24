@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Lab in courses .
+This project generates trains timetable randomly.
+Have used(React)
 
 ## Available Scripts
 
